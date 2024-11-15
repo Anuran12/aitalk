@@ -12,7 +12,7 @@ export default function Topbar() {
       </div>
       <div className="w-full flex gap-5 justify-end items-center">
         <Link
-          href={"/"}
+          href={"/about"}
           className="border-2 border-[#2E3036] px-5 py-2.5 rounded-full"
         >
           About Us

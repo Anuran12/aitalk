@@ -67,7 +67,7 @@ export default function ContactPage() {
               href={"/"}
               className="bg-gradient-to-t from-[#34019C] to-[#5F2BFA] px-10 py-3 rounded-full text-[1.2vw] w-fit mt-[1.5vw]"
             >
-              Get Started
+              Submit
             </Link>
           </form>
         </div>

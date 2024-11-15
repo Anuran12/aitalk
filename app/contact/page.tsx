@@ -7,7 +7,7 @@ import ContactImg from "@/public/contact.png";
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col gap-16 items-center justify-items-center min-h-screen p-8">
+    <div className="flex flex-col gap-16 items-center justify-center min-h-screen p-8">
       <div className=" w-full grid grid-cols-3 items-center justify-center px-[8vw]">
         <div className="w-full flex justify-start items-center">
           <Link

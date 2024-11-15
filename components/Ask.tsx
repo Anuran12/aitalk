@@ -131,13 +131,13 @@ export default function Ask() {
       </div>
       <div className="flex gap-5 justify-end items-center">
         <Link
-          href={"/"}
+          href={"/login"}
           className="border-2 border-[#2E3036] bg-[#2E3036] px-16 py-2.5 rounded-full text-[#B4B4B4]"
         >
           Login
         </Link>
         <Link
-          href={"/"}
+          href={"/signup"}
           className="border-2 border-[#2E3036] px-5 py-2.5 rounded-full text-[#B4B4B4]"
         >
           Sign Up

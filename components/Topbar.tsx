@@ -18,7 +18,7 @@ export default function Topbar() {
           About Us
         </Link>
         <Link
-          href={"/"}
+          href={"/contact"}
           className="border-2 border-[#2E3036] px-5 py-2.5 rounded-full"
         >
           Contact US

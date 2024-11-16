@@ -63,23 +63,44 @@ export default function Topbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="absolute left-0 right-0 bg-[#17181c] border-t border-[#2E3036] px-8 py-4 flex flex-col gap-4">
-            <Link
-              href={"/about"}
-              className="border-2 border-[#2E3036] px-5 py-2.5 rounded-full text-center text-sm hover:bg-gray-800 transition-colors"
-            >
-              About Us
-            </Link>
-            <Link
-              href={"/contact"}
-              className="border-2 border-[#2E3036] px-5 py-2.5 rounded-full text-center text-sm hover:bg-gray-800 transition-colors"
-            >
-              Contact Us
-            </Link>
-          </div>
-        )}
+        {/* Mobile Menu - Added transitions and shadow */}
+        <div
+          className={`
+            absolute left-0 right-0 
+            bg-[#17181c] border-t border-[#2E3036] 
+            shadow-[0_4px_6px_-1px_rgba(0,0,0,0.5)] 
+            px-8 py-4 flex flex-col gap-4
+            transform transition-all duration-300 ease-in-out z-10
+            ${
+              isMenuOpen
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-4 pointer-events-none"
+            }
+          `}
+        >
+          <Link
+            href={"/about"}
+            className="border-2 border-[#2E3036] px-5 py-2.5 rounded-full text-center text-sm hover:bg-gray-800 transition-colors"
+          >
+            About Us
+          </Link>
+          <Link
+            href={"/contact"}
+            className="border-2 border-[#2E3036] px-5 py-2.5 rounded-full text-center text-sm hover:bg-gray-800 transition-colors"
+          >
+            Contact Us
+          </Link>
+        </div>
+
+        {/* Overlay for menu background */}
+        <div
+          className={`
+            fixed inset-0 bg-black/50 
+            transition-opacity duration-300 ease-in-out
+            ${isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}
+          `}
+          onClick={() => setIsMenuOpen(false)}
+        />
       </div>
     </div>
   );

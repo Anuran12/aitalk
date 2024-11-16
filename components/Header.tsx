@@ -7,7 +7,7 @@ import Logo from "@/public/Logo.png";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="w-full px-8 lg:px-[8vw]">
+    <div className="w-full px-3 lg:px-[8vw]">
       {/* Desktop Header */}
       <div className="hidden lg:grid grid-cols-3 items-center justify-center w-full">
         <div className="w-full flex justify-start items-center">

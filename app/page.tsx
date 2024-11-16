@@ -3,7 +3,7 @@ import Topbar from "@/components/Topbar";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen p-8">
+    <div className="flex flex-col items-center justify-center h-screen p-4 md:p-8">
       <Topbar />
       <Ask />
     </div>

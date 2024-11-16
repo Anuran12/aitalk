@@ -6,8 +6,10 @@ export default function Ask() {
   const [message, setMessage] = useState("");
   return (
     <div className="w-full h-full flex flex-col justify-center items-center gap-[5vw]">
-      <div className="w-full sm:w-[70%] md:w-[50%] flex flex-col justify-center items-center gap-5">
-        <h1 className=" font-medium text-[3vw] mb-5">Ask AiTalk Ai anything</h1>
+      <div className="w-full sm:w-[70%] md:w-[50%] flex flex-col justify-center items-center gap-10 sm:gap-5">
+        <h1 className=" font-medium text-[6.5vw] md:text-[4vw] lg:text-[3vw] mb-5">
+          Ask AiTalk Ai anything
+        </h1>
         <div className="w-full relative">
           <input
             type="text"
@@ -34,7 +36,7 @@ export default function Ask() {
           </button>
         </div>
         {/* Action Buttons */}
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-1 sm:gap-4 text-[0.8rem] sm:text-[1rem]">
           <button className="flex items-center gap-2 px-4 py-2 text-[#787A7E] border-2 border-[#393A40] rounded-full hover:bg-gray-800 transition-colors">
             <svg
               width="17"
@@ -129,7 +131,7 @@ export default function Ask() {
           </button>
         </div>
       </div>
-      <div className="flex gap-5 justify-end items-center">
+      <div className="flex gap-5 justify-end items-center mt-5 sm:mt-0">
         <Link
           href={"/login"}
           className="border-2 border-[#2E3036] bg-[#2E3036] px-16 py-2.5 rounded-full text-[#B4B4B4]"

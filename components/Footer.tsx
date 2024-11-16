@@ -15,7 +15,7 @@ export default function Footer() {
           <span className="hover:text-white cursor-pointer">Cookie Policy</span>
           <span className="hidden lg:block">·</span>
         </div>
-        <span>© 2024 Cliency. All Right Reserved</span>
+        <span>© 2024 Aitalk. All Right Reserved</span>
       </div>
 
       {/* Right side - Social Icons */}

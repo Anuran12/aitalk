@@ -7,7 +7,6 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center h-screen p-8">
       <Topbar />
       <Ask />
-      <Footer />
     </div>
   );
 }

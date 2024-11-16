@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Logo from "@/public/Logo.png";
 import Aboutimg1 from "@/public/about1.png";
 import Aboutimg2 from "@/public/about2.png";
 import Aboutimg3 from "@/public/about3.png";

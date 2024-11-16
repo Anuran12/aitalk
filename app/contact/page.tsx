@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Logo from "@/public/Logo.png";
 import Footer from "@/components/Footer";
 import ContactImg from "@/public/contact.png";
 import Header from "@/components/Header";

@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Topbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="w-full px-3 lg:px-[8vw]">
+    <div className="w-full lg:px-[8vw]">
       {/* Desktop Header */}
       <div className="hidden lg:grid grid-cols-3 items-center justify-center w-full">
         <div className="w-full flex justify-start items-center"></div>
@@ -34,7 +34,7 @@ export default function Topbar() {
 
       {/* Mobile Header */}
       <div className="lg:hidden">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between">
           <Link href={"/"}>
             <Image src={Logo} alt="Logo" className="w-auto h-8" />
           </Link>

@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col gap-16 items-center justify-center min-h-screen p-8">
+    <div className="flex flex-col gap-16 items-center min-h-screen p-8">
       <Header />
       <div className="px-[8vw] flex">
         <div className="w-[50%] flex flex-col pt-[3vw]">

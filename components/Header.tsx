@@ -7,7 +7,7 @@ import Logo from "@/public/Logo.png";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="w-full px-3 lg:px-[8vw]">
+    <div className="w-full lg:px-[8vw]">
       {/* Desktop Header */}
       <div className="hidden lg:grid grid-cols-3 items-center justify-center w-full">
         <div className="w-full flex justify-start items-center">
@@ -54,7 +54,7 @@ export default function Header() {
 
       {/* Mobile Header */}
       <div className="lg:hidden">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between">
           <Link
             href={"/"}
             className="bg-[#393A40] p-3 rounded-full flex justify-center items-center hover:bg-white/75 transition-colors"

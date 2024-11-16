@@ -2,11 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import LoginImg from "@/public/login.png";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function LoginPage() {
   return (
-    <div className="flex flex-col gap-3 items-center justify-center h-screen p-8">
-      <Image src={LoginImg} alt="" />
+    <div className="flex flex-col gap-3 items-center justify-center min-h-screen p-8">
+      <Header />
+      <Image src={LoginImg} alt="" className=" w-[10vw]" />
       <h1 className="font-semibold text-[2.8vw] mb-[1vw]">
         Good to have you back
       </h1>
@@ -115,6 +118,7 @@ export default function LoginPage() {
           </svg>
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

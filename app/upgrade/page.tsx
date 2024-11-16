@@ -1,8 +1,11 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import React from "react";
 
 export default function UpgradePage() {
   return (
     <div className="flex flex-col items-center justify-center gap-6 min-h-screen p-8">
+      <Header />
       <h1 className="font-bold text-[2.5vw]">Upgrade Plan</h1>
       <div className="grid grid-cols-3 w-[75%] gap-4">
         <div className="bg-[#313D6A]/15 border-2 border-[#2E3036] w-full flex flex-col gap-4 items-center px-5 md:px-8 py-4 rounded-[10px]">
@@ -83,6 +86,7 @@ export default function UpgradePage() {
           </ul>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

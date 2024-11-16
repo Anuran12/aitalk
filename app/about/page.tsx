@@ -6,44 +6,12 @@ import Aboutimg1 from "@/public/about1.png";
 import Aboutimg2 from "@/public/about2.png";
 import Aboutimg3 from "@/public/about3.png";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default function AboutPage() {
   return (
     <div className="flex flex-col gap-10 items-center justify-center min-h-screen p-8">
-      <div className=" w-full grid grid-cols-3 items-center justify-center px-[8vw]">
-        <div className="w-full flex justify-start items-center">
-          <Link
-            href={"/"}
-            className=" bg-[#393A40] px-5 aspect-square rounded-full flex justify-center items-center"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="3"
-              stroke="#17181c"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5 8.25 12l7.5-7.5"
-              />
-            </svg>
-          </Link>
-        </div>
-        <div className="w-full flex justify-center items-center">
-          <Image src={Logo} alt="" />
-        </div>
-        <div className="w-full flex gap-5 justify-end items-center">
-          <Link
-            href={"/contact"}
-            className="border-2 border-[#2E3036] px-5 py-2.5 rounded-full text-[1.2vw]"
-          >
-            Contact US
-          </Link>
-        </div>
-      </div>
+      <Header />
       <div className="flex flex-col justify-center items-center">
         <h1 className="font-semibold text-[3vw]">About</h1>
         <p className="w-[60%] text-[1.5vw] text-center font-thin text-[#a0a0a0]">

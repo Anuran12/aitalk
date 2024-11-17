@@ -1,5 +1,6 @@
 import AdminHeader from "@/components/admin/AdminHeader";
 import AdminSidebar from "@/components/admin/AdminSidebar";
+import DetailedSubscription from "@/components/admin/DetailedSubscription";
 import QuickStats from "@/components/admin/QuickStats";
 import Subscriptions from "@/components/admin/Subscriptions";
 import React from "react";
@@ -16,13 +17,10 @@ export default function SubscriptionPage() {
         <div className="w-full px-[2vw]">
           <QuickStats />
           {/* Subscription Section */}
-          <h1 className="text-[#787A7E] text-[5vw] md:text-[2vw] pb-5">
-            Subscription
-          </h1>
           <div>
             <div className="mb-8 w-full">
               <div className="flex w-full">
-                <Subscriptions />
+                <DetailedSubscription />
               </div>
             </div>
           </div>

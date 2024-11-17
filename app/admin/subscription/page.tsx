@@ -2,7 +2,6 @@ import AdminHeader from "@/components/admin/AdminHeader";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import DetailedSubscription from "@/components/admin/DetailedSubscription";
 import QuickStats from "@/components/admin/QuickStats";
-import Subscriptions from "@/components/admin/Subscriptions";
 import React from "react";
 
 export default function SubscriptionPage() {

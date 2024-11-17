@@ -7,7 +7,7 @@ const PLANS = {
   BUSINESS: "Business Plan",
 };
 
-const REGISTRATION_METHODS = ["Google", "Email", "GitHub", "Apple"];
+// const REGISTRATION_METHODS = ["Google", "Email", "GitHub", "Apple"];
 
 const MOCK_USERS = [
   {

@@ -1,8 +1,6 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Avatar from "@/public/avatar.png";
-import SidebarMobile from "./SidebarMobile";
 
 const AdminHeader = () => {
   return (

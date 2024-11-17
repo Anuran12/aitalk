@@ -44,7 +44,7 @@ export default function SidebarMobile({
         fixed lg:static inset-y-0 left-0 
         transform ${isOpen ? "translate-x-0" : "-translate-x-full"} 
         lg:translate-x-0 transition-transform duration-300 ease-in-out
-         z-30 w-[55%] md:w-[20%] h-full border-r-2 border-[#2E3036] fixed top-0 left-0 bg-[#17181c]
+         z-30 w-[55%] md:w-[20%] h-full border-r-2 border-[#2E3036] bg-[#17181c]
       `}
       >
         <div className="flex flex-col h-full items-center p-6 gap-10 relative">

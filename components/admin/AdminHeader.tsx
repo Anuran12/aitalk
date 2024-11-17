@@ -5,35 +5,10 @@ import Avatar from "@/public/avatar.png";
 import SidebarMobile from "./SidebarMobile";
 
 const AdminHeader = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const handleClose = () => {
-    setIsSidebarOpen(false);
-  };
   return (
     <div className="w-full flex justify-between items-center px-4 sm:px-6 md:px-8 py-4 md:py-6">
       <div className="flex gap-3">
-        <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="lg:hidden"
-          aria-label="Toggle menu"
-        >
-          {/* Hamburger icon */}
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-        <h1 className="text-[#787A7E] text-lg md:text-xl lg:text-2xl font-semibold">
+        <h1 className="text-[#787A7E] text-lg md:text-xl lg:text-2xl font-semibold pl-8 md:pl-0">
           Dashboard
         </h1>
       </div>
@@ -93,9 +68,6 @@ const AdminHeader = () => {
           />
         </button>
       </div>
-      {isSidebarOpen && (
-        <SidebarMobile isOpen={isSidebarOpen} onClose={handleClose} />
-      )}
     </div>
   );
 };

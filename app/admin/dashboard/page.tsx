@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
 import QuickStats from "@/components/admin/QuickStats";
@@ -17,10 +17,35 @@ const statData = [
 ];
 
 export default function Dashboard() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsSidebarOpen(false);
+  };
   return (
     <div className="flex items-center justify-center min-h-screen relative w-full px-3 md:px-0">
-      <div className="w-[20%] h-full border-r-2 border-[#2E3036] fixed top-0 left-0 hidden md:block">
-        <AdminSidebar />
+      <button
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className="lg:hidden absolute top-6 left-6 z-50"
+        aria-label="Toggle menu"
+      >
+        {/* Hamburger icon */}
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+      <div className="w-full h-full border-r-2 border-[#2E3036] fixed top-0 left-0">
+        <AdminSidebar isOpen={isSidebarOpen} onClose={handleClose} />
       </div>
 
       <div className="w-[20%] h-full hidden md:block"></div>

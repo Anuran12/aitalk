@@ -82,7 +82,7 @@ export default function Dashboard() {
                           <span>Business Plan</span>
                         </div>
                         <div className="flex gap-2">
-                          <button className="px-3 py-1 bg-yellow-600 rounded text-sm">
+                          <button className="py-1 bg-[#D3830A]/25 rounded-full text-sm text-[#D3830A] px-6">
                             Plus
                           </button>
                           <button className="px-3 py-1 text-green-500 text-sm">

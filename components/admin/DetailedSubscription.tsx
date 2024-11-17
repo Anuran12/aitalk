@@ -152,6 +152,8 @@ export default function DetailedSubscription() {
   const [users, setUsers] = useState(MOCK_USERS);
   const [searchTerm, setSearchTerm] = useState("");
   const [timeFilter, setTimeFilter] = useState("Last 24 Hrs");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdownId, setActiveDropdownId] = useState<number | null>(null);
 
   const filteredUsers = users.filter((user) => {
     const matchesPlan = user.plan === selectedPlan;
@@ -163,44 +165,80 @@ export default function DetailedSubscription() {
 
   const handleDelete = (userId: number) => {
     setUsers(users.filter((user) => user.id !== userId));
+    setActiveDropdownId(null);
+  };
+
+  const toggleDropdown = (userId: number) => {
+    setActiveDropdownId(activeDropdownId === userId ? null : userId);
   };
 
   return (
-    <div className="p-6 rounded-lg w-full">
+    <div className="p-3 sm:p-6 rounded-lg w-full">
       {/* Header Section */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-[#787A7E] text-[5vw] md:text-[2vw]">
-          Subscription
-        </h1>
-        <div className="flex items-center gap-4">
-          {/* Search Bar */}
-          <div className="relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="size-6 absolute left-2 top-2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-              />
-            </svg>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <div className="flex items-center justify-between w-full sm:w-auto">
+          <h1 className="text-xl sm:text-2xl font-bold text-white">
+            Subscription
+          </h1>
+          <button
+            className="sm:hidden text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                  />
+                </svg>
+              </div>
+            ) : (
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </div>
+            )}
+          </button>
+        </div>
 
+        <div
+          className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto
+          ${mobileMenuOpen ? "block" : "hidden sm:flex"}`}
+        >
+          {/* Search Bar */}
+          <div className=" flex-grow sm:flex-grow-0">
             <input
               type="text"
               placeholder="Search User"
-              className="bg-black/0 rounded-[10px] border-2 border-[#2E3036] cursor-pointer py-2 pl-10 pr-4 w-64"
+              className="bg-black/0 border-2 border-[#2E3036] text-white px-4 py-2 rounded-lg w-full sm:w-64"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
           {/* Time Filter Dropdown */}
           <select
-            className="bg-black/0 rounded-[10px] border-2 border-[#2E3036] cursor-pointer px-4 py-2"
+            className="bg-black/0 border-2 border-[#2E3036] text-white px-4 py-2 rounded-lg w-full sm:w-auto"
             value={timeFilter}
             onChange={(e) => setTimeFilter(e.target.value)}
           >
@@ -212,28 +250,30 @@ export default function DetailedSubscription() {
         </div>
       </div>
 
-      <div className=" w-full bg-[#2E3036] rounded-[10px] p-5">
-        {/* Plan Selection Tabs */}
-        <div className="flex gap-2 mb-6 ">
-          {Object.values(PLANS).map((plan) => (
-            <button
-              key={plan}
-              onClick={() => setSelectedPlan(plan)}
-              className={`px-4 py-2 rounded-lg transition-colors ${
-                selectedPlan === plan
-                  ? "bg-white text-gray-900"
-                  : "text-gray-400 hover:bg-gray-700"
-              }`}
-            >
-              {plan}
-            </button>
-          ))}
+      <div className="bg-[#2E3036] rounded-[10px] p-5">
+        {/* Plan Selection Tabs - Scrollable on mobile */}
+        <div className="overflow-x-auto mb-6">
+          <div className="flex gap-2 min-w-max">
+            {Object.values(PLANS).map((plan) => (
+              <button
+                key={plan}
+                onClick={() => setSelectedPlan(plan)}
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  selectedPlan === plan
+                    ? "bg-white text-gray-900"
+                    : "text-gray-400 hover:bg-gray-700"
+                }`}
+              >
+                {plan}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Users Table */}
+        {/* Users Table/Cards */}
         <div className="bg-[#1E1F23] rounded-lg">
-          {/* Table Header */}
-          <div className="grid grid-cols-6 gap-4 p-4 border-b border-gray-700 text-gray-400">
+          {/* Table Header - Hidden on mobile */}
+          <div className="hidden sm:grid grid-cols-6 gap-4 p-4 border-b border-gray-700 text-gray-400">
             <div className="col-span-1">Name</div>
             <div className="col-span-1">Registration Method</div>
             <div className="col-span-1">Date Joined</div>
@@ -242,7 +282,7 @@ export default function DetailedSubscription() {
             <div className="col-span-1">Action</div>
           </div>
 
-          {/* Table Body */}
+          {/* Table Body/Cards */}
           {filteredUsers.length === 0 ? (
             <div className="p-4 text-center text-gray-400">
               No users found for {selectedPlan}
@@ -251,36 +291,107 @@ export default function DetailedSubscription() {
             filteredUsers.map((user) => (
               <div
                 key={user.id}
-                className="grid grid-cols-6 gap-4 p-4 border-b border-gray-700 items-center"
+                className="border-b border-gray-700 last:border-0"
               >
-                <div className="col-span-1 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-medium">
-                    {user.avatar}
+                {/* Desktop View */}
+                <div className="hidden sm:grid grid-cols-6 gap-4 p-4 items-center">
+                  <div className="col-span-1 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-medium">
+                      {user.avatar}
+                    </div>
+                    <span className="text-white">{user.name}</span>
                   </div>
-                  <span className="text-white">{user.name}</span>
+                  <div className="col-span-1 text-gray-400">
+                    {user.registrationMethod}
+                  </div>
+                  <div className="col-span-1 text-gray-400">
+                    {user.dateJoined}
+                  </div>
+                  <div className="col-span-1">
+                    <span className="px-3 py-1 bg-teal-500/20 text-teal-500 rounded-full text-sm">
+                      {user.plan.split(" ")[0]}
+                    </span>
+                  </div>
+                  <div className="col-span-1 text-gray-400">{user.prompt}</div>
+                  <div className="col-span-1 flex gap-2">
+                    <button className="px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors text-white">
+                      Block
+                    </button>
+                    <button
+                      onClick={() => handleDelete(user.id)}
+                      className="px-4 py-2 text-red-500 rounded-lg hover:bg-gray-700 transition-colors"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
-                <div className="col-span-1 text-gray-400">
-                  {user.registrationMethod}
-                </div>
-                <div className="col-span-1 text-gray-400">
-                  {user.dateJoined}
-                </div>
-                <div className="col-span-1">
-                  <span className="px-3 py-1 bg-teal-500/20 text-teal-500 rounded-full text-sm">
-                    {user.plan.split(" ")[0]}
-                  </span>
-                </div>
-                <div className="col-span-1 text-gray-400">{user.prompt}</div>
-                <div className="col-span-1 flex gap-2">
-                  <button className="px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors text-white">
-                    Block
-                  </button>
-                  <button
-                    onClick={() => handleDelete(user.id)}
-                    className="px-4 py-2 text-red-500 rounded-lg hover:bg-gray-700 transition-colors"
-                  >
-                    Delete
-                  </button>
+
+                {/* Mobile View */}
+                <div className="sm:hidden p-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-medium">
+                        {user.avatar}
+                      </div>
+                      <div>
+                        <h3 className="text-white font-medium">{user.name}</h3>
+                        <span className="text-gray-400 text-sm">
+                          {user.registrationMethod}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => toggleDropdown(user.id)}
+                      className="text-gray-400 p-2"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="size-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Date Joined</span>
+                      <span className="text-white">{user.dateJoined}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-400">Plan</span>
+                      <span className="px-3 py-1 bg-teal-500/20 text-teal-500 rounded-full text-sm">
+                        {user.plan.split(" ")[0]}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Prompt</span>
+                      <span className="text-white">{user.prompt}</span>
+                    </div>
+                  </div>
+
+                  {/* Mobile Action Dropdown */}
+                  {activeDropdownId === user.id && (
+                    <div className="mt-4 flex gap-2">
+                      <button className="flex-1 px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors text-white">
+                        Block
+                      </button>
+                      <button
+                        onClick={() => handleDelete(user.id)}
+                        className="flex-1 px-4 py-2 text-red-500 rounded-lg hover:bg-gray-700 transition-colors"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             ))

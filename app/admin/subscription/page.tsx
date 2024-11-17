@@ -15,7 +15,7 @@ export default function SubscriptionPage() {
     <div className="flex items-center justify-center min-h-screen relative px-3 md:px-0">
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="lg:hidden absolute top-6 left-6 z-50"
+        className="lg:hidden absolute top-6 left-6 z-50 hover:bg-white/20"
         aria-label="Toggle menu"
       >
         {/* Hamburger icon */}
@@ -33,7 +33,7 @@ export default function SubscriptionPage() {
           />
         </svg>
       </button>
-      <div className="w-[20%] h-full border-r-2 border-[#2E3036] fixed top-0 left-0 hidden md:block">
+      <div className="w-full h-full border-r-2 border-[#2E3036] fixed top-0 left-0">
         <AdminSidebar isOpen={isSidebarOpen} onClose={handleClose} />
       </div>
       <div className="w-[20%] h-full hidden md:block"></div>

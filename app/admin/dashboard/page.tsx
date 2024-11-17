@@ -26,7 +26,7 @@ export default function Dashboard() {
     <div className="flex items-center justify-center min-h-screen relative w-full px-3 md:px-0">
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="lg:hidden absolute top-6 left-6 z-50"
+        className="lg:hidden absolute top-6 left-6 z-10"
         aria-label="Toggle menu"
       >
         {/* Hamburger icon */}

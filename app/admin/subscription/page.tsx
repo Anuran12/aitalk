@@ -33,7 +33,7 @@ export default function SubscriptionPage() {
           />
         </svg>
       </button>
-      <div className="w-full h-full border-r-2 border-[#2E3036] fixed top-0 left-0">
+      <div className="w-[20%] h-full fixed top-0 left-0">
         <AdminSidebar isOpen={isSidebarOpen} onClose={handleClose} />
       </div>
       <div className="w-[20%] h-full hidden md:block"></div>

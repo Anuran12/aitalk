@@ -4,6 +4,7 @@ import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
 import QuickStats from "@/components/admin/QuickStats";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import Subscriptions from "@/components/admin/Subscriptions";
 
 const statData = [
   { time: "0h", newUsers: 10, newSubs: 8 },
@@ -34,40 +35,7 @@ export default function Dashboard() {
           <div>
             <div className="mb-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-[#2E3036] p-4 rounded-lg">
-                  <div className="flex gap-2 mb-4">
-                    <button className="bg-white text-gray-900 px-4 py-2 rounded">
-                      Free Plan
-                    </button>
-                    <button className="text-gray-400 px-4 py-2">
-                      Plus Plan
-                    </button>
-                    <button className="text-gray-400 px-4 py-2">
-                      Business Plan
-                    </button>
-                  </div>
-                  <div className="bg-[#1E1F23] rounded-[10px]">
-                    {[1, 2, 3, 4].map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center justify-between py-2 px-2"
-                      >
-                        <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 bg-purple-500 rounded-full"></div>
-                          <span>Business Plan</span>
-                        </div>
-                        <div className="flex gap-2">
-                          <button className="px-4 py-1 bg-gray-700 rounded">
-                            Block
-                          </button>
-                          <button className="px-4 py-1 text-red-500">
-                            Delete
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <Subscriptions />
 
                 <div className="ounded-lg">
                   <div className="bg-[#2E3036] p-4 rounded-[10px]">

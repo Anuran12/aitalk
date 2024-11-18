@@ -94,7 +94,7 @@ export default function UpgradePage() {
           </button>
           <ul className="text-[#A9ABB6] text-sm md:text-base flex flex-col gap-3 md:gap-4">
             <li>Custom made AI model for Corporate</li>
-            <li>Private GPUs hosted at customer's location</li>
+            <li>Private GPUs hosted at customer&apos;s location</li>
             <li>public discussion supported</li>
             <li>Fully control of the ai supercomputer</li>
             <li>24x7 Support</li>

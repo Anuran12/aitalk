@@ -56,7 +56,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="w-full px-4 lg:px-[3vw] flex flex-col lg:flex-row rounded-[20px]">
+        <div className="w-full px-4 lg:px-[3vw] flex flex-col-reverse lg:flex-row rounded-[20px]">
           <div className="w-full lg:w-[50%] mb-4 lg:mb-0">
             <Image
               src={Aboutimg3}

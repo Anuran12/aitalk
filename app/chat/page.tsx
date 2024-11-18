@@ -9,13 +9,13 @@ export default function ChatPage() {
   const [message, setMessage] = useState("");
   return (
     <div className="flex items-center justify-center h-screen relative">
-      <div className="w-[20%] fixed top-0 left-0">
+      <div className="w-[20%] fixed top-0 left-0 z-50">
         <ChatSidebar />
       </div>
       <div className="w-[20%] h-full hidden md:block"></div>
       <div className="w-[80%] flex items-center justify-center ">
         <div className="w-full sm:w-[70%] md:w-[60%] flex flex-col justify-center items-center gap-5">
-          <div className="w-full ">
+          <div className="w-full relative z-10">
             <input
               type="text"
               value={message}
@@ -23,7 +23,7 @@ export default function ChatPage() {
               placeholder="Message Aitalk ai"
               className="w-full rounded-lg px-4 py-4 pr-12 text-white placeholder-gray-500 bg-black/0 border-2 border-[#2E3036]"
             />
-            {/* <button className="absolute aspect-square right-2 top-1/2 -translate-y-1/2 h-[75%] flex items-center rounded-lg justify-center text-gray-400 hover:text-white bg-[#393A40]">
+            <button className="absolute aspect-square right-2 top-1/2 -translate-y-1/2 h-[75%] flex items-center rounded-lg justify-center text-gray-400 hover:text-white bg-[#393A40]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -38,7 +38,7 @@ export default function ChatPage() {
                   d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                 />
               </svg>
-            </button> */}
+            </button>
           </div>
           {/* Action Buttons */}
           <div className="flex flex-wrap justify-center gap-1 sm:gap-4 text-[0.8rem] sm:text-[1rem]">

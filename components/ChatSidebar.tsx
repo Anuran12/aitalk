@@ -121,7 +121,7 @@ const ChatSidebar = () => {
       <div
         className={`
         fixed top-0 left-0 h-full bg-[#17181c] transition-transform duration-300
-        w-80 lg:w-72 border-r-2 border-[#2E3036] 
+        w-80 lg:w-72 border-r-2 border-[#2E3036] z-40
         ${
           isMobileMenuOpen
             ? "translate-x-0"

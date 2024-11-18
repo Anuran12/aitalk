@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Aboutimg1 from "@/public/about1.png";
-import Aboutimg2 from "@/public/about2.png";
+import Aboutimg2 from "@/public/about2.jpg";
 import Aboutimg3 from "@/public/about3.png";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -26,9 +26,22 @@ export default function AboutPage() {
           <Image src={Aboutimg1} alt="" className="rounded-[20px] w-full" />
         </div>
 
-        <div className="px-4 lg:px-[3vw] flex justify-center items-center relative">
+        <div className="px-4 lg:px-[3vw] flex flex-col md:flex-row justify-center items-center relative">
+          <div className=" left-0 top-0 w-full lg:w-[45%] p-4 lg:pl-[3vw] bg-[#17181C] rounded-[20px] block md:hidden">
+            <h1 className="text-xl lg:text-[2.5vw] mb-2 lg:mb-4">
+              Our vision for the future of AI
+            </h1>
+            <p className="text-sm lg:text-[1.5vw] font-light leading-4 lg:leading-[125%] text-white lg:text-[#a0a0a0]">
+              Make AI-powered conversation accessible to everyone, regardless of
+              geographical location, language, or socioeconomic background.
+              Revolutionize human interaction, information exchange, and
+              knowledge sharing. Drive positive change by leveraging AI to
+              improve quality of life, reduce living costs, and enhance overall
+              well-being.
+            </p>
+          </div>
           <Image src={Aboutimg2} alt="" className="rounded-[20px] w-full" />
-          <div className="absolute left-0 top-0 w-full lg:w-[45%] p-4 lg:pl-[3vw] bg-black/50 lg:bg-transparent rounded-[20px] h-full">
+          <div className="absolute left-0 top-0 w-full lg:w-[45%] p-4 lg:pl-[3vw] bg-[#17181C] rounded-[20px] hidden md:block">
             <h1 className="text-xl lg:text-[2.5vw] mb-2 lg:mb-4">
               Our vision for the future of AI
             </h1>

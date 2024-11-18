@@ -313,7 +313,7 @@ export default function DetailedSubscription() {
                     </span>
                   </div>
                   <div className="col-span-1 text-gray-400">{user.prompt}</div>
-                  <div className="col-span-1 flex gap-2">
+                  <div className="col-span-1 flex gap-2 flex-wrap">
                     <button className="px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors text-white">
                       Block
                     </button>

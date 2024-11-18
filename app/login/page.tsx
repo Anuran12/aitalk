@@ -7,10 +7,10 @@ import Footer from "@/components/Footer";
 
 export default function LoginPage() {
   return (
-    <div className="flex flex-col gap-3 items-center justify-center min-h-screen p-8">
+    <div className="flex flex-col gap-3 items-center justify-between min-h-screen p-8">
       <Header />
-      <Image src={LoginImg} alt="" className=" w-[10vw]" />
-      <h1 className="font-semibold text-[2.8vw] mb-[1vw]">
+      <Image src={LoginImg} alt="" className=" w-[30vw] md:w-[10vw]" />
+      <h1 className="font-semibold text-[5vw] md:text-[2.8vw] mb-[1vw]">
         Good to have you back
       </h1>
       <form
@@ -62,7 +62,7 @@ export default function LoginPage() {
         </svg>
       </div>
       <div className="flex gap-3">
-        <button className="bg-[#393A40] rounded-full aspect-square w-[3.5vw] flex justify-center items-center">
+        <button className="bg-[#393A40] rounded-full aspect-square w-[10vw] md:w-[3.5vw] flex justify-center items-center">
           <svg
             width="25"
             viewBox="0 0 32 33"
@@ -103,7 +103,7 @@ export default function LoginPage() {
             </defs>
           </svg>
         </button>
-        <button className="bg-[#393A40] rounded-full aspect-square w-[3.5vw] flex justify-center items-center">
+        <button className="bg-[#393A40] rounded-full aspect-square w-[10vw] md:w-[3.5vw] flex justify-center items-center">
           <svg
             width="14"
             height="25"

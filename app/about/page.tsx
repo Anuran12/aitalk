@@ -31,7 +31,7 @@ export default function AboutPage() {
             <h1 className="text-xl lg:text-[2.5vw] mb-2 lg:mb-4">
               Our vision for the future of AI
             </h1>
-            <p className="text-sm lg:text-[1.5vw] font-light leading-4 lg:leading-[125%] text-white lg:text-[#a0a0a0]">
+            <p className="text-sm lg:text-[1.5vw] font-light leading-4 lg:leading-[125%] text-[#a0a0a0] lg:text-[#a0a0a0]">
               Make AI-powered conversation accessible to everyone, regardless of
               geographical location, language, or socioeconomic background.
               Revolutionize human interaction, information exchange, and

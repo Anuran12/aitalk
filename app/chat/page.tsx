@@ -41,7 +41,7 @@ export default function ChatPage() {
             </button> */}
           </div>
           {/* Action Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-1 sm:gap-4 text-[0.8rem] sm:text-[1rem]">
             <button className="flex items-center gap-2 px-4 py-2 text-[#787A7E] border-2 border-[#393A40] rounded-full hover:bg-gray-800 transition-colors">
               <svg
                 width="17"
@@ -137,8 +137,8 @@ export default function ChatPage() {
           </div>
         </div>
       </div>
-      <div className="absolute top-10 right-10">
-        <Image src={Avatar} alt="" />
+      <div className="absolute top-5 right-5 md::top-10 md:right-10">
+        <Image src={Avatar} alt="" className="w-[10vw] md:w-[4vw]" />
       </div>
     </div>
   );

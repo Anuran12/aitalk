@@ -13,7 +13,7 @@ export default function AboutPage() {
       <Header />
       <div className="flex flex-col justify-center items-center">
         <h1 className="font-semibold text-2xl lg:text-[3vw] mb-4">About</h1>
-        <p className="w-full lg:w-[60%] text-base lg:text-[1.5vw] text-center font-light text-[#a0a0a0]">
+        <p className="w-full lg:w-[60%] text-sm lg:text-[1.5vw] text-center text-[#a0a0a0]">
           Aitalk is dedicated to democratizing access to artificial
           intelligence, empowering individuals worldwide to harness its
           potential. Our mission is to bridge the technology gap, fostering a
@@ -31,7 +31,7 @@ export default function AboutPage() {
             <h1 className="text-xl lg:text-[2vw] mb-2 lg:mb-4">
               Our vision for the future of AI
             </h1>
-            <p className="text-sm lg:text-[1.5vw] font-light leading-4 lg:leading-[125%] text-[#a0a0a0] lg:text-[#a0a0a0]">
+            <p className="text-sm lg:text-[1.5vw] leading-4 lg:leading-[125%] text-[#a0a0a0] lg:text-[#a0a0a0]">
               Make AI-powered conversation accessible to everyone, regardless of
               geographical location, language, or socioeconomic background.
               Revolutionize human interaction, information exchange, and
@@ -45,7 +45,7 @@ export default function AboutPage() {
             <h1 className="text-xl lg:text-[2.5vw] mb-2 lg:mb-4">
               Our vision for the future of AI
             </h1>
-            <p className="text-sm lg:text-[1.5vw] font-light leading-4 lg:leading-[125%] text-white lg:text-[#a0a0a0]">
+            <p className="text-sm lg:text-[1.5vw] leading-4 lg:leading-[125%] text-white lg:text-[#a0a0a0]">
               Make AI-powered conversation accessible to everyone, regardless of
               geographical location, language, or socioeconomic background.
               Revolutionize human interaction, information exchange, and
@@ -66,23 +66,23 @@ export default function AboutPage() {
           </div>
           <div className="w-full lg:w-[50%] bg-[#1E1F24] rounded-b-[20px] rounded-t-[20px] md:rounded-t-[0px] lg:rounded-r-[20px] lg:rounded-bl-none py-6 lg:py-[3.5vw] px-6 lg:px-[2.5vw] flex flex-col gap-4 lg:gap-6">
             <h1 className="font-bold text-xl lg:text-[2vw]">Core Values</h1>
-            <p className="text-sm lg:text-[1.2vw] text-[#A5A6A9] lg:leading-10">
+            <p className="text-sm lg:text-[1.5vw] text-[#A5A6A9] lg:leading-10">
               <span className="font-semibold text-white">Accessibility: </span>
               AI for all, without barriers.
             </p>
-            <p className="text-sm lg:text-[1.2vw] text-[#A5A6A9] lg:leading-10">
+            <p className="text-sm lg:text-[1.5vw] text-[#A5A6A9] lg:leading-10">
               <span className="font-semibold text-white">Inclusivity: </span>
               Embracing diversity, promoting global understanding.
             </p>
-            <p className="text-sm lg:text-[1.2vw] text-[#A5A6A9] lg:leading-10">
+            <p className="text-sm lg:text-[1.5vw] text-[#A5A6A9] lg:leading-10">
               <span className="font-semibold text-white">Innovation: </span>
               Pioneering AI solutions for real-world impact.
             </p>
-            <p className="text-sm lg:text-[1.2vw] text-[#A5A6A9] lg:leading-10">
+            <p className="text-sm lg:text-[1.5vw] text-[#A5A6A9] lg:leading-10">
               <span className="font-semibold text-white">Empowerment: </span>
               Enabling individuals to make informed decisions.
             </p>
-            <p className="text-sm lg:text-[1.2vw] text-[#A5A6A9] lg:leading-10">
+            <p className="text-sm lg:text-[1.5vw] text-[#A5A6A9] lg:leading-10">
               <span className="font-semibold text-white">Responsibility: </span>
               Ensuring AI benefits humanity.
             </p>

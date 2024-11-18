@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div className="w-full px-6 lg:px-[5vw] flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-0 pb-6 lg:pb-[2vw] pt-8 lg:pt-[4vw]">
       {/* Left side - Links */}
-      <div className="flex flex-col lg:flex-row gap-3 text-sm lg:text-[0.8vw] text-[#d8d8d8] text-center lg:text-left">
+      <div className="flex flex-col lg:flex-row gap-3 text-sm lg:text-[0.9vw] text-[#d8d8d8] text-center lg:text-left">
         <div className="flex flex-col lg:flex-row gap-3">
           <span className="hover:text-white cursor-pointer">Privacy</span>
           <span className="hidden lg:block">·</span>

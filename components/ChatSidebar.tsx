@@ -1,40 +1,78 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+interface Chat {
+  id: number;
+  title: string;
+}
+
+interface MonthGroup {
+  month: string;
+  chats: Chat[];
+}
+
 const ChatSidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
 
   // Sample chat history data organized by months
-  const chatHistory = [
+  const chatHistory: MonthGroup[] = [
     {
       month: "May",
       chats: [
-        "Marketing Strategy Review",
-        "Website Content Planning",
-        "Client Project Proposal",
-        "Team Meeting Notes",
+        { id: 1, title: "Marketing Strategy Review" },
+        { id: 2, title: "Website Content Planning" },
+        { id: 3, title: "Client Project Proposal" },
+        { id: 4, title: "Team Meeting Notes" },
       ],
     },
     {
       month: "April",
       chats: [
-        "Product Development Ideas",
-        "Social Media Campaign",
-        "Budget Planning 2024",
-        "User Research Summary",
+        { id: 5, title: "Product Development Ideas" },
+        { id: 6, title: "Social Media Campaign" },
+        { id: 7, title: "Budget Planning 2024" },
+        { id: 8, title: "User Research Summary" },
       ],
     },
     {
       month: "March",
       chats: [
-        "Customer Feedback Analysis",
-        "Brand Guidelines Draft",
-        "SEO Optimization Plan",
-        "App Feature Requirements",
+        { id: 9, title: "Customer Feedback Analysis" },
+        { id: 10, title: "Brand Guidelines Draft" },
+        { id: 11, title: "SEO Optimization Plan" },
+        { id: 12, title: "App Feature Requirements" },
       ],
     },
   ];
+
+  const handleOpen = (chatId: number): void => {
+    console.log("Opening chat:", chatId);
+    // Add your open chat logic here
+    setActiveDropdown(null);
+  };
+
+  const handleDelete = (chatId: number): void => {
+    console.log("Deleting chat:", chatId);
+    // Add your delete chat logic here
+    setActiveDropdown(null);
+  };
+
+  // Close dropdown when clicking outside
+  const handleClickOutside = (e: MouseEvent): void => {
+    const target = e.target as HTMLElement;
+    if (!target.closest(".chat-item")) {
+      setActiveDropdown(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -118,15 +156,23 @@ const ChatSidebar = () => {
             {chatHistory.map((monthGroup, idx) => (
               <div key={idx} className="mb-6">
                 <h2 className="text-lg font-medium mb-2">{monthGroup.month}</h2>
-                {monthGroup.chats.map((chat, chatIdx) => (
+                {monthGroup.chats.map((chat) => (
                   <div
-                    key={chatIdx}
-                    className="group flex items-center hover:bg-[#2E3036] rounded-lg mb-1 transition-colors"
+                    key={chat.id}
+                    className="chat-item group relative flex items-center hover:bg-[#2E3036] rounded-lg mb-1 transition-colors"
                   >
                     <span className="flex-1 p-3 text-[#9D9999] text-sm">
-                      {chat}
+                      {chat.title}
                     </span>
-                    <button className="p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                      className="p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveDropdown(
+                          activeDropdown === chat.id ? null : chat.id
+                        );
+                      }}
+                    >
                       <svg
                         width="18"
                         viewBox="0 0 24 8"
@@ -148,6 +194,24 @@ const ChatSidebar = () => {
                         />
                       </svg>
                     </button>
+
+                    {/* Dropdown Menu */}
+                    {activeDropdown === chat.id && (
+                      <div className="absolute right-0 top-full mt-1 w-32 bg-[#2E3036] rounded-lg shadow-lg overflow-hidden z-10">
+                        <button
+                          onClick={() => handleOpen(chat.id)}
+                          className="w-full px-4 py-2 text-left text-sm text-[#9D9999] hover:bg-[#17181c] transition-colors"
+                        >
+                          Open
+                        </button>
+                        <button
+                          onClick={() => handleDelete(chat.id)}
+                          className="w-full px-4 py-2 text-left text-sm text-red-500 hover:bg-[#17181c] transition-colors"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

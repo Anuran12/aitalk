@@ -27,8 +27,8 @@ export default function AboutPage() {
         </div>
 
         <div className="px-4 lg:px-[3vw] flex flex-col md:flex-row justify-center items-center relative">
-          <div className=" left-0 top-0 w-full lg:w-[45%] p-4 lg:pl-[3vw] bg-[#17181C] rounded-[20px] block md:hidden">
-            <h1 className="text-xl lg:text-[2.5vw] mb-2 lg:mb-4">
+          <div className=" left-0 top-0 w-full lg:w-[45%] p-4 lg:pl-[3vw] bg-[#1E1F24] rounded-b-[20px] rounded-[20px] block md:hidden">
+            <h1 className="text-xl lg:text-[2vw] mb-2 lg:mb-4">
               Our vision for the future of AI
             </h1>
             <p className="text-sm lg:text-[1.5vw] font-light leading-4 lg:leading-[125%] text-[#a0a0a0] lg:text-[#a0a0a0]">
@@ -64,7 +64,7 @@ export default function AboutPage() {
               className="rounded-t-[20px] lg:rounded-l-[20px] lg:rounded-tr-none w-full"
             />
           </div>
-          <div className="w-full lg:w-[50%] bg-[#1E1F24] rounded-b-[20px] lg:rounded-r-[20px] lg:rounded-bl-none py-6 lg:py-[3.5vw] px-6 lg:px-[2.5vw] flex flex-col gap-4 lg:gap-6">
+          <div className="w-full lg:w-[50%] bg-[#1E1F24] rounded-b-[20px] rounded-t-[20px] md:rounded-t-[0px] lg:rounded-r-[20px] lg:rounded-bl-none py-6 lg:py-[3.5vw] px-6 lg:px-[2.5vw] flex flex-col gap-4 lg:gap-6">
             <h1 className="font-bold text-xl lg:text-[2vw]">Core Values</h1>
             <p className="text-sm lg:text-[1.2vw] text-[#A5A6A9] lg:leading-10">
               <span className="font-semibold text-white">Accessibility: </span>

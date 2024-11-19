@@ -14,7 +14,7 @@ export default function AboutPage() {
       <Header />
       <div className="flex flex-col justify-center items-center">
         <h1 className="font-semibold text-2xl lg:text-[3vw] mb-4">About</h1>
-        <p className="w-full lg:w-[60%] text-sm lg:text-[1.5vw] text-center text-[#a0a0a0]">
+        <p className="w-full lg:w-[60%] text-sm lg:text-[1.5vw] text-center text-[#a0a0a0] leading-4 lg:leading-[125%]">
           Aitalk is dedicated to democratizing access to artificial
           intelligence, empowering individuals worldwide to harness its
           potential. Our mission is to bridge the technology gap, fostering a

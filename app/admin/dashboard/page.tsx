@@ -74,10 +74,10 @@ export default function Dashboard() {
                           <div className="w-8 h-8 bg-purple-500 rounded-full"></div>
                           <span>Business Plan</span>
                         </div>
-                        <div className="flex gap-2">
-                          <button className="py-1 bg-[#D3830A]/25 rounded-full text-sm text-[#D3830A] px-6">
-                            Plus
-                          </button>
+                        <button className="py-1 bg-[#D3830A]/25 rounded-full text-sm text-[#D3830A] px-6">
+                          Plus
+                        </button>
+                        <div className="flex gap-2 flex-wrap w-[25%] md:w-fit">
                           <button className="px-3 py-1 text-green-500 text-sm">
                             Accept
                           </button>

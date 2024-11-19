@@ -67,7 +67,7 @@ export default function Subscriptions() {
                 </div>
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap w-[30%] md:w-fit">
                 <button className="px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
                   Block
                 </button>

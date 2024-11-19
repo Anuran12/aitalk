@@ -14,6 +14,21 @@ const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
+  callbacks: {
+    session: ({ session, token }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        provider: token.provider,
+      },
+    }),
+    jwt: ({ token, account }) => {
+      if (account) {
+        token.provider = account.provider;
+      }
+      return token;
+    },
+  },
 };
 
 /**

@@ -6,23 +6,53 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { Session } from "next-auth";
+
+interface ExtendedUser {
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+  provider?: string;
+}
+
+interface ExtendedSession extends Session {
+  user: ExtendedUser;
+}
+
+interface PasswordData {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
+interface ProfileData {
+  name: string;
+  email: string;
+  bio: string;
+  image: string | null;
+  joinDate: string;
+  authProvider: string;
+}
 
 export default function Profile() {
-  const { data: session } = useSession();
+  const { data: sessionData } = useSession();
+  const session = sessionData as ExtendedSession;
+
   const [isEditing, setIsEditing] = useState(false);
   const [showPasswordForm, setShowPasswordForm] = useState(false);
-  const [passwordData, setPasswordData] = useState({
+  const [passwordData, setPasswordData] = useState<PasswordData>({
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
   });
-  const [profileData, setProfileData] = useState({
+
+  const [profileData, setProfileData] = useState<ProfileData>({
     name: session?.user?.name || "User Name",
     email: session?.user?.email || "user@example.com",
     bio: "AI enthusiast and technology lover",
     image: session?.user?.image || null,
-    joinDate: "November 15, 2024", // This should come from your user data
-    authProvider: "email", // This should come from your session
+    joinDate: "November 15, 2024",
+    authProvider: session?.user?.provider || "email",
   });
 
   const handleSave = () => {
@@ -57,6 +87,7 @@ export default function Profile() {
       reader.readAsDataURL(file);
     }
   };
+  console.log(profileData.authProvider);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen relative bg-black text-white p-4 lg:p-8">
@@ -167,7 +198,7 @@ export default function Profile() {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold">Current Plan</h2>
               <Link
-                href={"/upgrade"}
+                href="/upgrade"
                 className="px-4 py-2 bg-[#D3830A]/15 text-white rounded-lg hover:bg-[#D3830A]/20 transition-colors"
               >
                 Upgrade Plan

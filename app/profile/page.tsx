@@ -37,12 +37,77 @@ interface ProfileData {
   authProvider: string;
 }
 
+const countryCodes = [
+  { name: "Afghanistan", code: "93" },
+  { name: "Albania", code: "355" },
+  { name: "Algeria", code: "213" },
+  { name: "Andorra", code: "376" },
+  { name: "Angola", code: "244" },
+  { name: "Argentina", code: "54" },
+  { name: "Armenia", code: "374" },
+  { name: "Australia", code: "61" },
+  { name: "Austria", code: "43" },
+  { name: "Bangladesh", code: "880" },
+  { name: "Belarus", code: "375" },
+  { name: "Belgium", code: "32" },
+  { name: "Brazil", code: "55" },
+  { name: "Canada", code: "1 " },
+  { name: "Chile", code: "56" },
+  { name: "China", code: "86" },
+  { name: "Colombia", code: "57" },
+  { name: "Costa Rica", code: "506" },
+  { name: "Denmark", code: "45" },
+  { name: "Egypt", code: "20" },
+  { name: "Finland", code: "358" },
+  { name: "France", code: "33" },
+  { name: "Germany", code: "49" },
+  { name: "Greece", code: "30" },
+  { name: "Hungary", code: "36" },
+  { name: "India", code: "91" },
+  { name: "Indonesia", code: "62" },
+  { name: "Israel", code: "972" },
+  { name: "Italy", code: "39" },
+  { name: "Japan", code: "81" },
+  { name: "Kazakhstan", code: "7 " },
+  { name: "Kenya", code: "254" },
+  { name: "Kuwait", code: "965" },
+  { name: "Malaysia", code: "60" },
+  { name: "Mexico", code: "52" },
+  { name: "Mongolia", code: "976" },
+  { name: "Netherlands", code: "31" },
+  { name: "New Zealand", code: "64" },
+  { name: "Norway", code: "47" },
+  { name: "Oman", code: "968" },
+  { name: "Pakistan", code: "92" },
+  { name: "Peru", code: "51" },
+  { name: "Poland", code: "48" },
+  { name: "Portugal", code: "351" },
+  { name: "Qatar", code: "974" },
+  { name: "Romania", code: "40" },
+  { name: "Russia", code: "7" },
+  { name: "Saudi Arabia", code: "966" },
+  { name: "Singapore", code: "65" },
+  { name: "South Africa", code: "27" },
+  { name: "South Korea", code: "82" },
+  { name: "Spain", code: "34" },
+  { name: "Sweden", code: "46" },
+  { name: "Switzerland", code: "41" },
+  { name: "Thailand", code: "66" },
+  { name: "Turkey", code: "90" },
+  { name: "Ukraine", code: "380" },
+  { name: "United Arab Emirates", code: "971" },
+  { name: "United Kingdom", code: "44" },
+  { name: "United States", code: "1" },
+  { name: "Vietnam", code: "84" },
+];
+
 export default function Profile() {
   const { data: sessionData } = useSession();
   const session = sessionData as ExtendedSession;
 
   const [isEditing, setIsEditing] = useState(false);
   const [showPasswordForm, setShowPasswordForm] = useState(false);
+  const [countryCode, setCountryCode] = useState("1");
   const [passwordData, setPasswordData] = useState<PasswordData>({
     currentPassword: "",
     newPassword: "",
@@ -61,7 +126,7 @@ export default function Profile() {
   const [profileData, setProfileData] = useState<ProfileData>({
     name: session?.user?.name || "User Name",
     email: session?.user?.email || "user@example.com",
-    phone: session?.user?.phone || "+1123456789",
+    phone: session?.user?.phone || "123456789",
     bio: "AI enthusiast and technology lover",
     image: session?.user?.image || null,
     joinDate: "November 15, 2024",
@@ -258,16 +323,33 @@ export default function Profile() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-[#787A7E]">Phone Number</label>
-                  <input
-                    type="number"
-                    placeholder="phone number"
-                    value={profileData.phone}
-                    disabled={!isEditing}
-                    onChange={(e) =>
-                      setProfileData({ ...profileData, phone: e.target.value })
-                    }
-                    className="w-full bg-black/0 border-2 border-[#2E3036] rounded-lg px-4 py-2"
-                  />
+                  <div className="flex gap-2">
+                    <select
+                      value={countryCode}
+                      onChange={(e) => setCountryCode(e.target.value)}
+                      className="bg-[#1E1F23] text-white border-2 border-[#2E3036] rounded-lg px-4 py-2 hover:bg-[#393A40]"
+                      disabled={!isEditing}
+                    >
+                      {countryCodes.map((country) => (
+                        <option key={country.code} value={country.code}>
+                          +{country.code} ({country.name})
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      type="text"
+                      placeholder="Phone number"
+                      value={profileData.phone}
+                      onChange={(e) =>
+                        setProfileData({
+                          ...profileData,
+                          phone: e.target.value,
+                        })
+                      }
+                      disabled={!isEditing}
+                      className="flex-grow bg-black/0 border-2 border-[#2E3036] rounded-lg px-4 py-2"
+                    />
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-[#787A7E]">Bio</label>

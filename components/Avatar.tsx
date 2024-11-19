@@ -1,10 +1,12 @@
+"use client";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Avatar from "@/public/avatar.png";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 const AvatarDropdown = () => {
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -27,7 +29,19 @@ const AvatarDropdown = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
-        <Image src={Avatar} alt="User avatar" className="w-[10vw] md:w-[4vw]" />
+        {session?.user?.image ? (
+          <Image
+            src={session?.user?.image}
+            alt="Profile"
+            className="w-full h-full object-cover rounded-full"
+            width={50}
+            height={50}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-3xl">
+            {session?.user?.name?.[0] ?? "?"}
+          </div>
+        )}
       </button>
 
       {isOpen && (

@@ -2,10 +2,10 @@
 import React from "react";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import ChatSidebar from "@/components/ChatSidebar";
-import AvatarDropdown from "@/components/Avatar";
 import Link from "next/link";
 import Image from "next/image";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default function Profile() {
   const { data: session } = useSession();
@@ -40,15 +40,10 @@ export default function Profile() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen relative bg-black text-white">
-      {/* Sidebar */}
-      <div className="w-[20%] fixed top-0 left-0 z-50">
-        <ChatSidebar />
-      </div>
-      <div className="w-[20%] h-full hidden md:block"></div>
-
+    <div className="flex flex-col items-center justify-center min-h-screen relative bg-black text-white p-4 lg:p-8">
+      <Header />
       {/* Main Content */}
-      <div className="md:w-[80%] w-full flex items-center justify-center">
+      <div className="w-full flex items-center justify-center">
         <div className="w-full sm:w-[70%] md:w-[60%] flex flex-col items-center gap-8 p-6">
           {/* Profile Header */}
           <div className="relative w-full flex flex-col items-center gap-4">
@@ -228,11 +223,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
-
-      {/* Avatar Dropdown */}
-      <div className="absolute top-5 right-5 md:top-10 md:right-10">
-        <AvatarDropdown />
-      </div>
+      <Footer />
     </div>
   );
 }

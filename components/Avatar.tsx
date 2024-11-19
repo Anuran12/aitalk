@@ -26,7 +26,10 @@ const AvatarDropdown = () => {
   }, []);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div
+      className="relative flex justify-center items-center"
+      ref={dropdownRef}
+    >
       <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
         {session?.user?.image ? (
           <Image

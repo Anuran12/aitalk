@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Avatar from "@/public/avatar.png";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 const AvatarDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,11 +24,6 @@ const AvatarDropdown = () => {
     };
   }, []);
 
-  const handleSettings = () => {
-    // Add your settings logic here
-    console.log("Opening settings...");
-  };
-
   return (
     <div className="relative" ref={dropdownRef}>
       <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
@@ -37,8 +33,8 @@ const AvatarDropdown = () => {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5">
           <div className="py-1">
-            <button
-              onClick={handleSettings}
+            <Link
+              href={"/profile"}
               className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 w-full text-left"
             >
               <svg
@@ -61,7 +57,7 @@ const AvatarDropdown = () => {
                 />
               </svg>
               Settings
-            </button>
+            </Link>
             <button
               onClick={() => signOut()}
               className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 w-full text-left"

@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
 import Avatar from "@/public/avatar.png";
+import AvatarDropdown from "@/components/Avatar";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -149,7 +150,7 @@ export default function Home() {
             </div>
           </div>
           <div className="absolute top-5 right-5 md::top-10 md:right-10">
-            <Image src={Avatar} alt="" className="w-[10vw] md:w-[4vw]" />
+            <AvatarDropdown />
           </div>
         </div>
       )}

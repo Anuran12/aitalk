@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Avatar from "@/public/avatar.png";
+import AvatarDropdown from "../Avatar";
 
 const AdminHeader = () => {
   return (
@@ -56,15 +57,7 @@ const AdminHeader = () => {
           </svg>
         </button>
 
-        <button className="flex items-center">
-          <Image
-            src={Avatar}
-            alt="User avatar"
-            width={40}
-            height={40}
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full"
-          />
-        </button>
+        <AvatarDropdown />
       </div>
     </div>
   );

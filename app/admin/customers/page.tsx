@@ -2,10 +2,22 @@
 import AdminHeader from "@/components/admin/AdminHeader";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import QuickStats from "@/components/admin/QuickStats";
-import React, { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 export default function CustomersPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!session) {
+      // Redirect to the homepage if the user is logged in
+      router.push("/");
+    }
+  }, [session, router]);
 
   const handleClose = () => {
     setIsSidebarOpen(false);

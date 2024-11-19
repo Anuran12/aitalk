@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
 import QuickStats from "@/components/admin/QuickStats";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import Subscriptions from "@/components/admin/Subscriptions";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const statData = [
   { time: "0h", newUsers: 10, newSubs: 8 },
@@ -18,6 +20,16 @@ const statData = [
 
 export default function Dashboard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!session) {
+      // Redirect to the homepage if the user is logged in
+      router.push("/");
+    }
+  }, [session, router]);
 
   const handleClose = () => {
     setIsSidebarOpen(false);

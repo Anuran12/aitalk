@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import Image from "next/image";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Session } from "next-auth";
+import { useRouter } from "next/navigation";
 
 interface ExtendedUser {
   name?: string | null;
@@ -45,6 +46,15 @@ export default function Profile() {
     newPassword: "",
     confirmPassword: "",
   });
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!session) {
+      // Redirect to the homepage if the user is logged in
+      router.push("/");
+    }
+  }, [session, router]);
 
   const [profileData, setProfileData] = useState<ProfileData>({
     name: session?.user?.name || "User Name",

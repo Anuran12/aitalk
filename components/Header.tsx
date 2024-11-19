@@ -82,7 +82,7 @@ export default function Header() {
             <Image src={Logo} alt="Logo" className="w-auto h-8" />
           </Link>
           <div className="flex gap-2">
-            <AvatarDropdown />
+            {session && <AvatarDropdown />}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-3 rounded-full hover:bg-gray-800 transition-colors"

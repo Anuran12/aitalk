@@ -108,6 +108,7 @@ export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [showPasswordForm, setShowPasswordForm] = useState(false);
   const [countryCode, setCountryCode] = useState("1");
+  const [showImageUploadPopup, setShowImageUploadPopup] = useState(false);
   const [passwordData, setPasswordData] = useState<PasswordData>({
     currentPassword: "",
     newPassword: "",
@@ -160,6 +161,14 @@ export default function Profile() {
             ...profileData,
             image: result,
           });
+
+          // Show popup
+          setShowImageUploadPopup(true);
+
+          // Hide popup after 3 seconds
+          setTimeout(() => {
+            setShowImageUploadPopup(false);
+          }, 3000);
         }
       };
       reader.readAsDataURL(file);
@@ -170,6 +179,11 @@ export default function Profile() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen relative bg-black text-white p-4 lg:p-8">
       <Header />
+      {showImageUploadPopup && (
+        <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transition-all">
+          Profile image uploaded successfully!
+        </div>
+      )}
       {/* Main Content */}
       <div className="w-full flex items-center justify-center">
         <div className="w-full sm:w-[70%] md:w-[60%] flex flex-col items-center gap-8 p-6">

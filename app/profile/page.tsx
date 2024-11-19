@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 interface ExtendedUser {
   name?: string | null;
   email?: string | null;
+  phone?: string | null;
   image?: string | null;
   provider?: string;
 }
@@ -29,6 +30,7 @@ interface PasswordData {
 interface ProfileData {
   name: string;
   email: string;
+  phone: string;
   bio: string;
   image: string | null;
   joinDate: string;
@@ -59,6 +61,7 @@ export default function Profile() {
   const [profileData, setProfileData] = useState<ProfileData>({
     name: session?.user?.name || "User Name",
     email: session?.user?.email || "user@example.com",
+    phone: session?.user?.phone || "+1123456789",
     bio: "AI enthusiast and technology lover",
     image: session?.user?.image || null,
     joinDate: "November 15, 2024",
@@ -249,6 +252,19 @@ export default function Profile() {
                     disabled={!isEditing}
                     onChange={(e) =>
                       setProfileData({ ...profileData, email: e.target.value })
+                    }
+                    className="w-full bg-black/0 border-2 border-[#2E3036] rounded-lg px-4 py-2"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[#787A7E]">Phone Number</label>
+                  <input
+                    type="number"
+                    placeholder="phone number"
+                    value={profileData.phone}
+                    disabled={!isEditing}
+                    onChange={(e) =>
+                      setProfileData({ ...profileData, phone: e.target.value })
                     }
                     className="w-full bg-black/0 border-2 border-[#2E3036] rounded-lg px-4 py-2"
                   />

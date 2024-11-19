@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import Avatar from "@/public/avatar.png";
 import AvatarDropdown from "../Avatar";
 
 const AdminHeader = () => {

@@ -52,7 +52,7 @@ export default function Header() {
           >
             Contact Us
           </Link>
-          <AvatarDropdown />
+          {session && <AvatarDropdown />}
         </div>
       </div>
 

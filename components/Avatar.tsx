@@ -33,8 +33,8 @@ const AvatarDropdown = () => {
             src={session?.user?.image}
             alt="Profile"
             className="w-full h-full object-cover rounded-full"
-            width={50}
-            height={50}
+            width={40}
+            height={40}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-3xl">

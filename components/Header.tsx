@@ -3,9 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import Logo from "@/public/Logo.png";
+import { useSession } from "next-auth/react";
+import AvatarDropdown from "./Avatar";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session } = useSession();
   return (
     <div className="w-full lg:px-[8vw] z-50">
       {/* Desktop Header */}
@@ -49,6 +52,7 @@ export default function Header() {
           >
             Contact Us
           </Link>
+          <AvatarDropdown />
         </div>
       </div>
 
@@ -77,29 +81,32 @@ export default function Header() {
           <Link href={"/"}>
             <Image src={Logo} alt="Logo" className="w-auto h-8" />
           </Link>
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-3 rounded-full hover:bg-gray-800 transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              className="size-6"
+          <div className="flex gap-2">
+            <AvatarDropdown />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-3 rounded-full hover:bg-gray-800 transition-colors"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d={
-                  isMenuOpen
-                    ? "M6 18L18 6M6 6l12 12"
-                    : "M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
-                }
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d={
+                    isMenuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
+                  }
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu - Added transitions and shadow */}

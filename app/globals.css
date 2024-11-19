@@ -21,3 +21,45 @@ p {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.PhoneInput {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.PhoneInputCountry {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.PhoneInputCountryIconImg {
+  height: 30px;
+}
+
+.PhoneInputCountrySelect {
+  width: 100%;
+  background: none;
+  border: 2px solid #2e3036;
+  border-radius: 10px;
+  padding: 8px;
+}
+.PhoneInputCountrySelect:focus {
+  background: black;
+}
+.PhoneInputInput {
+  width: 100%;
+  background: none;
+  border: 2px solid #2e3036;
+  border-radius: 10px;
+  padding: 8px;
+}
+.PhoneInputCountryIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

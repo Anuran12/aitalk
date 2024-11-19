@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Session } from "next-auth";
 import { useRouter } from "next/navigation";
+import PhoneInput from "react-phone-number-input";
 
 interface ExtendedUser {
   name?: string | null;
@@ -101,13 +102,15 @@ const countryCodes = [
   { name: "Vietnam", code: "84" },
 ];
 
+type E164Number = string | undefined;
+
 export default function Profile() {
   const { data: sessionData } = useSession();
   const session = sessionData as ExtendedSession;
 
   const [isEditing, setIsEditing] = useState(false);
   const [showPasswordForm, setShowPasswordForm] = useState(false);
-  const [countryCode, setCountryCode] = useState("1");
+  const [countryCode, setCountryCode] = useState<E164Number>(undefined);
   const [showImageUploadPopup, setShowImageUploadPopup] = useState(false);
   const [passwordData, setPasswordData] = useState<PasswordData>({
     currentPassword: "",
@@ -173,6 +176,9 @@ export default function Profile() {
       };
       reader.readAsDataURL(file);
     }
+  };
+  const handlePhoneChange = (value: E164Number) => {
+    setCountryCode(value); // Update state with the new phone number (or undefined)
   };
   console.log(profileData.authProvider);
 
@@ -343,31 +349,13 @@ export default function Profile() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-[#787A7E]">Phone Number</label>
-                  <div className="flex gap-2">
-                    <select
+                  <div className="flex gap-2 w-full">
+                    <PhoneInput
+                      international
+                      defaultCountry="US"
+                      placeholder="Enter phone number"
                       value={countryCode}
-                      onChange={(e) => setCountryCode(e.target.value)}
-                      className="bg-[#1E1F23] text-white border-2 border-[#2E3036] rounded-lg px-4 py-2 hover:bg-[#393A40]"
-                      disabled={!isEditing}
-                    >
-                      {countryCodes.map((country) => (
-                        <option key={country.code} value={country.code}>
-                          +{country.code} ({country.name})
-                        </option>
-                      ))}
-                    </select>
-                    <input
-                      type="text"
-                      placeholder="Phone number"
-                      value={profileData.phone}
-                      onChange={(e) =>
-                        setProfileData({
-                          ...profileData,
-                          phone: e.target.value,
-                        })
-                      }
-                      disabled={!isEditing}
-                      className="flex-grow bg-black/0 border-2 border-[#2E3036] rounded-lg px-4 py-2"
+                      onChange={handlePhoneChange} // This now correctly updates the state with the phone number string
                     />
                   </div>
                 </div>

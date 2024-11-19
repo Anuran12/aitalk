@@ -3,9 +3,7 @@ import Ask from "@/components/Ask";
 import ChatSidebar from "@/components/ChatSidebar";
 import Topbar from "@/components/Topbar";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import { useState } from "react";
-import Avatar from "@/public/avatar.png";
 import AvatarDropdown from "@/components/Avatar";
 
 export default function Home() {

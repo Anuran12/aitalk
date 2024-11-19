@@ -10,16 +10,35 @@ import Header from "@/components/Header";
 export default function Profile() {
   const { data: session } = useSession();
   const [isEditing, setIsEditing] = useState(false);
+  const [showPasswordForm, setShowPasswordForm] = useState(false);
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
   const [profileData, setProfileData] = useState({
     name: session?.user?.name || "User Name",
     email: session?.user?.email || "user@example.com",
     bio: "AI enthusiast and technology lover",
     image: session?.user?.image || null,
+    joinDate: "November 15, 2024", // This should come from your user data
+    authProvider: "email", // This should come from your session
   });
 
   const handleSave = () => {
     setIsEditing(false);
     // Add your save logic here
+  };
+
+  const handlePasswordChange = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Add your password change logic here
+    setShowPasswordForm(false);
+    setPasswordData({
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    });
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +98,6 @@ export default function Profile() {
                       d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
                     />
                   </svg>
-
                   <input
                     type="file"
                     className="hidden"
@@ -139,6 +157,9 @@ export default function Profile() {
                 )}
               </button>
             </div>
+            <div className="text-sm text-[#787A7E]">
+              Member since {profileData.joinDate}
+            </div>
           </div>
 
           {/* Current Plan */}
@@ -162,20 +183,6 @@ export default function Profile() {
                   Active
                 </span>
               </div>
-              {/* <div className="space-y-2">
-                <div className="flex items-center gap-2 text-[#787A7E]">
-                  <Check size={16} className="text-blue-400" />
-                  <span>Unlimited AI conversations</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#787A7E]">
-                  <Check size={16} className="text-blue-400" />
-                  <span>Priority support</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#787A7E]">
-                  <Check size={16} className="text-blue-400" />
-                  <span>Advanced AI features</span>
-                </div>
-              </div> */}
               <div className="mt-4 pt-4 border-t border-[#2E3036]">
                 <div className="flex justify-between text-sm">
                   <span className="text-[#787A7E]">Next billing date:</span>
@@ -216,10 +223,99 @@ export default function Profile() {
                     className="w-full bg-black/0 border-2 border-[#2E3036] rounded-lg px-4 py-2 min-h-[100px]"
                   />
                 </div>
+                <div className="pt-4 border-t border-[#2E3036]">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-medium">Authentication Method</h3>
+                      <p className="text-sm text-[#787A7E] mt-1">
+                        {profileData.authProvider === "email"
+                          ? "Email and Password"
+                          : `Signed in with ${profileData.authProvider}`}
+                      </p>
+                    </div>
+                    {profileData.authProvider === "email" && (
+                      <button
+                        onClick={() => setShowPasswordForm(!showPasswordForm)}
+                        className="px-4 py-2 bg-[#393A40] rounded-lg hover:bg-[#4A4B52] transition-colors"
+                      >
+                        Change Password
+                      </button>
+                    )}
+                  </div>
+
+                  {showPasswordForm && profileData.authProvider === "email" && (
+                    <form
+                      onSubmit={handlePasswordChange}
+                      className="mt-4 space-y-4"
+                    >
+                      <div className="space-y-2">
+                        <label className="text-sm text-[#787A7E]">
+                          Current Password
+                        </label>
+                        <input
+                          type="password"
+                          value={passwordData.currentPassword}
+                          onChange={(e) =>
+                            setPasswordData({
+                              ...passwordData,
+                              currentPassword: e.target.value,
+                            })
+                          }
+                          className="w-full bg-black/0 border-2 border-[#2E3036] rounded-lg px-4 py-2"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm text-[#787A7E]">
+                          New Password
+                        </label>
+                        <input
+                          type="password"
+                          value={passwordData.newPassword}
+                          onChange={(e) =>
+                            setPasswordData({
+                              ...passwordData,
+                              newPassword: e.target.value,
+                            })
+                          }
+                          className="w-full bg-black/0 border-2 border-[#2E3036] rounded-lg px-4 py-2"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm text-[#787A7E]">
+                          Confirm New Password
+                        </label>
+                        <input
+                          type="password"
+                          value={passwordData.confirmPassword}
+                          onChange={(e) =>
+                            setPasswordData({
+                              ...passwordData,
+                              confirmPassword: e.target.value,
+                            })
+                          }
+                          className="w-full bg-black/0 border-2 border-[#2E3036] rounded-lg px-4 py-2"
+                        />
+                      </div>
+                      <div className="flex justify-end gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setShowPasswordForm(false)}
+                          className="px-4 py-2 bg-[#393A40] rounded-lg hover:bg-[#4A4B52] transition-colors"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          className="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                          Update Password
+                        </button>
+                      </div>
+                    </form>
+                  )}
+                </div>
               </div>
             </section>
-
-            {/* Preferences */}
           </div>
         </div>
       </div>

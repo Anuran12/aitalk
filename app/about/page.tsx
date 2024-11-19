@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import Aboutimg1 from "@/public/about1.png";
 import Aboutimg2 from "@/public/about2.jpg";
+import Aboutimg4 from "@/public/about4.png";
 import Aboutimg3 from "@/public/about3.png";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -40,7 +41,16 @@ export default function AboutPage() {
               well-being.
             </p>
           </div>
-          <Image src={Aboutimg2} alt="" className="rounded-[20px] w-full" />
+          <Image
+            src={Aboutimg2}
+            alt=""
+            className="rounded-[20px] w-full block md:hidden"
+          />
+          <Image
+            src={Aboutimg4}
+            alt=""
+            className="rounded-[20px] w-full hidden md:block"
+          />
           <div className="absolute left-0 top-0 w-full lg:w-[45%] p-4 lg:pl-[3vw] bg-[#17181C] rounded-[20px] hidden md:block">
             <h1 className="text-xl lg:text-[2.5vw] mb-2 lg:mb-4">
               Our vision for the future of AI
@@ -61,7 +71,7 @@ export default function AboutPage() {
             <Image
               src={Aboutimg3}
               alt=""
-              className="rounded-t-[20px] lg:rounded-l-[20px] lg:rounded-tr-none w-full"
+              className="rounded-t-[20px] lg:rounded-l-[20px] lg:rounded-tr-none w-full h-full object-cover"
             />
           </div>
           <div className="w-full lg:w-[50%] bg-[#1E1F24] rounded-b-[20px] rounded-t-[20px] md:rounded-t-[0px] lg:rounded-r-[20px] lg:rounded-bl-none py-6 lg:py-[3.5vw] px-6 lg:px-[2.5vw] flex flex-col gap-4 lg:gap-6">
